@@ -243,48 +243,48 @@
         }
       });
 
-      // Gestion de la soumission du formulaire
-      $("#supportForm").submit(function (event) {
-        // Empêcher le comportement par défaut du formulaire (rechargement de la page)
-        event.preventDefault();
+       // Gestion de la soumission du formulaire
+    $("#supportForm").submit(function (event) {
+      // Empêcher le comportement par défaut du formulaire (rechargement de la page)
+      event.preventDefault();
 
-        // Ajouter le code pour rediriger vers l'URL après la soumission du formulaire
-        var selectedAssister = $("#assister").val();
-        if (selectedAssister === "evenements") {
-          window.location.href = "https://www.davidlaroche.fr/events";
-        } else if (selectedAssister === "acheter") {
-          var selectedProduit = $("#produitDemande").val();
-          if (selectedProduit === "EDEC") {
-            window.location.href = "https://larochegroup.typeform.com/to/SPieZz1Y?";
-          } else if (selectedProduit === "EPR") {
-            window.location.href = "https://epr.paradox.io/programme";
-          } else if (selectedProduit === "EPW") {
-            window.location.href = "https://formation.paradox.io/empowered";
-          } else if (selectedProduit === "Fundamentals") {
-            window.location.href = "https://formation.paradox.io/fundamentals";
-          } else {
-            // Ajouter le code pour traiter les autres cas de soumission du formulaire
-            // ...
-          }
+      // Ajouter le code pour rediriger vers l'URL après la soumission du formulaire
+      var selectedAssister = $("#assister").val();
+      if (selectedAssister === "evenements") {
+        window.location.href = "https://www.davidlaroche.fr/events";
+      } else if (selectedAssister === "acheter") {
+        var selectedProduit = $("#produitDemande").val();
+        if (selectedProduit === "EDEC") {
+          window.location.href = "https://larochegroup.typeform.com/to/SPieZz1Y?";
+        } else if (selectedProduit === "EPR") {
+          window.location.href = "https://epr.paradox.io/programme";
+        } else if (selectedProduit === "EPW") {
+          window.location.href = "https://formation.paradox.io/empowered";
+        } else if (selectedProduit === "Fundamentals") {
+          window.location.href = "https://formation.paradox.io/fundamentals";
+        } else {
+          // Ajouter le code pour traiter les autres cas de soumission du formulaire
+          // ...
         }
+      }
 
-        // Success and Error Messages
-        var successMessage = "Votre message a bien été envoyé!";
-        var errorMessage = "Erreur, Veuillez réessayer à nouveau.";
+      // Messages de succès et d'erreur
+      var successMessage = "Votre message a bien été envoyé!";
+      var errorMessage = "Erreur, Veuillez réessayer à nouveau.";
 
-        // Submit the form using AJAX
-        $.ajax({
-          type: "POST",
-          url: "https://webhook.frontapp.com/forms/90df7e245e8010b1aaf2/qiVA0gAJKcO2Q7DDUW8m_MCGzAJ7WW9FRU_CMladk5w1GyZDkTNfBryKSQZ6nALhW-Vpgubhlcen1KEkG1Q4Kl8QIGJFNXJGPcWpn4YPb8k_oR3tnOmjBiuAVLydjQ",
-          data: $(this).serialize(),
-          success: function () {
-            // Display success message
-            alert(successMessage);
-          },
-          error: function () {
-            // Display error message
-            alert(errorMessage);
-          }
+      // Soumettre le formulaire en utilisant AJAX
+      $.ajax({
+        type: "POST",
+        url: "https://webhook.frontapp.com/forms/90df7e245e8010b1aaf2/qiVA0gAJKcO2Q7DDUW8m_MCGzAJ7WW9FRU_CMladk5w1GyZDkTNfBryKSQZ6nALhW-Vpgubhlcen1KEkG1Q4Kl8QIGJFNXJGPcWpn4YPb8k_oR3tnOmjBiuAVLydjQ",
+        data: $(this).serialize(),
+        success: function () {
+          // Afficher le message de succès
+          alert(successMessage);
+        },
+        error: function () {
+          // Afficher le message d'erreur
+          alert(errorMessage);
+        }
         });
       });
     });
