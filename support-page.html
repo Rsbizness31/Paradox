@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>Support page - Paradox.io</title>
+  <style>
+    input, select, textarea, button {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      width: 100%;
+      transition: box-shadow 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      box-shadow: 0 0 10px rgba(205, 174, 141, 0.4);
+    }
+
+    button {
+      background-color: #cdae8d;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #a9936f;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .conditional-field {
+      display: none;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 4px;
+      transition: box-shadow 0.3s;
+      margin-bottom: 15px;
+    }
+
+    .conditional-field:hover {
+      box-shadow: 0 0 5px rgba(221, 221, 221, 0.8);
+    }
+
+    .last-field {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="supportForm">
+    <label for="prenom">Quel est votre prénom ?</label>
+    <input type="text" id="prenom" name="prenom" required>
+
+    <label for="nom">Quel est votre nom ?</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="email">Quelle est votre adresse E-mail ?</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="client">Êtes-vous déjà client?</label>
+    <select id="client" name="client">
+      <option value="" selected disabled>Choisissez...</option>
+      <option value="client">Je suis un client</option>
+      <option value="non-client">Je ne suis pas un client</option>
+    </select>
+
+    <div id="produit-section" class="conditional-field">
+      <label for="produit">Quel est votre produit ?</label>
+      <select id="produit" name="produit">
+        <option value="" selected disabled>Choisissez...</option>
+        <option value="EDEC">EDEC</option>
+        <option value="EPR">EPR-Entrainé pour réussir</option>
+        <option value="EPW">EPW-Empowered</option>
+        <option value="Fundamentals">Fundamentals</option>
+        <option value="Autres">Autres</option>
+        <option value="Aucune idee">Aucune idée</option>
+      </select>
+    </div>
+
+    <div id="commentAider-section" class="conditional-field">
+      <label for="commentAider">Comment pouvons-nous vous aider?</label>
+      <select id="commentAider" name="commentAider">
+        <option value="" selected disabled>Choisissez...</option>
+        <option value="Slack">Slack</option>
+        <option value="Bug">Bug</option>
+        <option value="Probleme technique">Problème technique</option>
+        <option value="Acces a la plateforme">Accès à la plateforme</option>
+        <option value="Replay">Replay</option>
+        <option value="Retard de paiement">Retard de paiement</option>
+        <option value="Remboursement">Remboursement</option>
+        <option value="Avoir">Avoir</option>
+        <option value="Paiement">Paiement</option>
+        <option value="Facture">Facture</option>
+        <option value="Lien Live">Lien Live</option>
+        <option value="Autres">Autres</option>
+      </select>
+    </div>
+
+    <div id="expliquerDemande-section" class="conditional-field">
+      <label for="expliquerDemande">Veuillez expliquer votre demande</label>
+      <textarea id="expliquerDemande" name="expliquerDemande"></textarea>
+    </div>
+
+    <div id="assister-section" class="conditional-field">
+      <label for="assister">Comment pouvons-nous vous assister ?</label>
+      <select id="assister" name="assister">
+        <option value="" selected disabled>Choisissez...</option>
+        <option value="acheter">Je souhaite acheter une des formations PARADOX</option>
+        <option value="question">J'ai une question sur l'une des formations PARADOX</option>
+        <option value="rejoindre">Je souhaite rejoindre la communauté PARADOX</option>
+        <option value="interesse">Je suis intéressé.e par la fondation</option>
+        <option value="evenements">Je souhaite connaître vos prochains événements</option>
+        <option value="partenariat">Je souhaite proposer un partenariat</option>
+        <option value="Autres">Autres</option>
+      </select>
+    </div>
+
+    <div id="produit-demande-section" class="conditional-field">
+      <label for="produitDemande">Quel produit vous intéresse ?</label>
+      <select id="produitDemande" name="produitDemande">
+        <option value="" selected disabled>Choisissez...</option>
+        <option value="EDEC">EDEC</option>
+        <option value="EPR">EPR-Entrainé pour réussir</option>
+        <option value="EPW">EPW-Empowered</option>
+        <option value="Fundamentals">Fundamentals</option>
+        <option value="Autres">Autres</option>
+        <option value="Aucune idee">Aucune idée</option>
+      </select>
+    </div>
+
+    <div id="assistanceDemande-section" class="conditional-field">
+      <label for="assistanceDemande">Votre demande concerne quel produit ?</label>
+      <select id="assistanceDemande" name="assistanceDemande">
+        <option value="" selected disabled>Choisissez...</option>
+        <option value="EDEC">EDEC</option>
+        <option value="EPR">EPR-Entrainé pour réussir</option>
+        <option value="EPW">EPW-Empowered</option>
+        <option value="Fundamentals">Fundamentals</option>
+        <option value="Autres">Autres</option>
+      </select>
+    </div>
+
+    <div id="interesseDemande-section" class="conditional-field">
+      <label for="interesseDemande">On peut sûrement vous aider ! Quels sont vos défis actuels ?</label>
+      <textarea id="interesseDemande" name="interesseDemande"></textarea>
+    </div>
+
+    <div id="preciserDemande-section" class="conditional-field">
+      <label for="preciserDemande">Veuillez préciser votre demande (champ texte)</label>
+      <textarea id="preciserDemande" name="preciserDemande"></textarea>
+    </div>
+
+    <div id="evenements-demande-section" class="conditional-field">
+      <label>Après le bouton Envoyer, renvoyer vers un URL externe</label>
+    </div>
+
+    <div id="detailDemande-section" class="conditional-field">
+      <label for="detailDemande">Veuillez détailler votre demande</label>
+      <textarea id="detailDemande" name="detailDemande"></textarea>
+    </div>
+
+    <div id="saisirDemande-section" class="conditional-field">
+      <label for="saisirDemande">Veuillez saisir votre demande ici</label>
+      <textarea id="saisirDemande" name="saisirDemande"></textarea>
+    </div>
+
+    <div id="detailPartenariat-section" class="conditional-field">
+      <label for="detailPartenariat">Veuillez détailler votre demande de partenariat ici</label>
+      <textarea id="detailPartenariat" name="detailPartenariat"></textarea>
+    </div>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <script>
+    $(document).ready(function () {
+      $("#client").on("input", function () {
+        $(".conditional-field").hide();
+        $("#client-section").show();
+        if ($(this).val() === "client") {
+          $("#produit-section").show();
+        } else if ($(this).val() === "non-client") {
+          $("#assister-section").show();
+        }
+      });
+
+      $("#produit").on("input", function () {
+        $(".conditional-field").hide();
+        $("#produit-section").show();
+        $("#commentAider-section").show();
+      });
+
+      $("#commentAider").on("input", function () {
+        $(".conditional-field").hide();
+        $("#produit-section").show();
+        $("#commentAider-section").show();
+
+        if ($(this).val() === "rejoindre") {
+          $("#assister-section").show();
+        } else if ($(this).val() === "acheter") {
+          $("#interesseProduit-section").show();
+        } else if ($(this).val() === "question") {
+          $("#produit-demande-section").show();
+        } else if ($(this).val() === "interesse-fondation") {
+          $("#preciserDemande-section").show();
+        } else if ($(this).val() === "evenements") {
+          $("#evenements-demande-section").show();
+        } else if ($(this).val() === "partenariat") {
+          $("#detailPartenariat-section").show();
+        } else if ($(this).val() === "Aucune idee") {
+          $("#interesseDemande-section").show();
+        }
+
+        if ($(this).val() !== "rejoindre") {
+          $("#expliquerDemande-section").show();
+        }
+      });
+
+      $("#assister").on("input", function () {
+        $(".conditional-field").hide();
+        $("#assister-section").show();
+
+        if ($(this).val() === "acheter") {
+          $("#produit-demande-section").show();
+        } else if ($(this).val() === "interesse") {
+          $("#detailDemande-section").show();
+        } else if ($(this).val() === "question") {
+          $("#assistanceDemande-section").show();
+        } else if ($(this).val() === "partenariat") {
+          $("#detailPartenariat-section").show();
+        } else if ($(this).val() === "Autres") {
+          $("#preciserDemande-section").show();
+        }
+      });
+
+      // Gestion de la soumission du formulaire
+      $("#supportForm").submit(function (event) {
+        // Empêcher le comportement par défaut du formulaire (rechargement de la page)
+        event.preventDefault();
+
+        // Ajouter le code pour rediriger vers l'URL après la soumission du formulaire
+        var selectedAssister = $("#assister").val();
+        if (selectedAssister === "evenements") {
+          window.location.href = "https://www.davidlaroche.fr/events";
+        } else if (selectedAssister === "acheter") {
+          var selectedProduit = $("#produitDemande").val();
+          if (selectedProduit === "EDEC") {
+            window.location.href = "https://larochegroup.typeform.com/to/SPieZz1Y?";
+          } else if (selectedProduit === "EPR") {
+            window.location.href = "https://epr.paradox.io/programme";
+          } else if (selectedProduit === "EPW") {
+            window.location.href = "https://formation.paradox.io/empowered";
+          } else if (selectedProduit === "Fundamentals") {
+            window.location.href = "https://formation.paradox.io/fundamentals";
+          } else {
+            // Ajouter le code pour traiter les autres cas de soumission du formulaire
+            // ...
+          }
+        } else {
+          // Ajouter le code pour traiter les autres cas de soumission du formulaire
+          // ...
+        }
+      });
+    });
+  </script>
+</body>
+</html>
