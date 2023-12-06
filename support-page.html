@@ -266,30 +266,26 @@
             // Ajouter le code pour traiter les autres cas de soumission du formulaire
             // ...
           }
-        // Success and Error Messages
-    var successMessage = "Votre message a bien été envoyé!";
-    var errorMessage = "Erreur, Veuillez réessayer à nouveau.";
-
-    // Submit the form (replace this with your actual form submission logic)
-    $("#supportForm").on("submit", function (e) {
-      e.preventDefault();
-
-      // Your form submission logic here
-      // For example, using AJAX to submit the form
-      $.ajax({
-        type: "POST",
-        url: "https://webhook.frontapp.com/forms/90df7e245e8010b1aaf2/qiVA0gAJKcO2Q7DDUW8m_MCGzAJ7WW9FRU_CMladk5w1GyZDkTNfBryKSQZ6nALhW-Vpgubhlcen1KEkG1Q4Kl8QIGJFNXJGPcWpn4YPb8k_oR3tnOmjBiuAVLydjQ",
-        data: $(this).serialize(),
-        success: function () {
-          // Display success message
-          alert(successMessage);
-        },
-        error: function () {
-          // Display error message
-          alert(errorMessage);
         }
-      });
-      });
+
+        // Success and Error Messages
+        var successMessage = "Votre message a bien été envoyé!";
+        var errorMessage = "Erreur, Veuillez réessayer à nouveau.";
+
+        // Submit the form using AJAX
+        $.ajax({
+          type: "POST",
+          url: "https://webhook.frontapp.com/forms/90df7e245e8010b1aaf2/qiVA0gAJKcO2Q7DDUW8m_MCGzAJ7WW9FRU_CMladk5w1GyZDkTNfBryKSQZ6nALhW-Vpgubhlcen1KEkG1Q4Kl8QIGJFNXJGPcWpn4YPb8k_oR3tnOmjBiuAVLydjQ",
+          data: $(this).serialize(),
+          success: function () {
+            // Display success message
+            alert(successMessage);
+          },
+          error: function () {
+            // Display error message
+            alert(errorMessage);
+          }
+        });
       });
     });
   </script>
