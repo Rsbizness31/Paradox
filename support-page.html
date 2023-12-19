@@ -179,7 +179,7 @@
       <textarea id="detailPartenariat" name="detailPartenariat"></textarea>
     </div>
 
-    <button type="submit">Envoyer</button>
+    
   </form>
 
   <script>
@@ -270,21 +270,6 @@
         // Messages de succès et d'erreur
         var successMessage = "Votre message a bien été envoyé!";
         var errorMessage = "Erreur, Veuillez réessayer à nouveau.";
-
-        // Soumettre le formulaire en utilisant AJAX
-        $.ajax({
-          type: "POST",
-          url: "https://webhook.frontapp.com/forms/90df7e245e8010b1aaf2/qiVA0gAJKcO2Q7DDUW8m_MCGzAJ7WW9FRU_CMladk5w1GyZDkTNfBryKSQZ6nALhW-Vpgubhlcen1KEkG1Q4Kl8QIGJFNXJGPcWpn4YPb8k_oR3tnOmjBiuAVLydjQ",
-          data: $(this).serialize(),
-          success: function () {
-            // Afficher le message de succès
-            alert(successMessage);
-          },
-          error: function () {
-            // Afficher le message d'erreur
-            alert(errorMessage);
-          }
-        });
       }
     });
     });
